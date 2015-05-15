@@ -7,6 +7,7 @@ enum types {
 	PARENT_TOT_SWIM,
 	AFTER_SCHOOL_SWIM,
 	A11Y_SWIM,
+	PRESCHOOL_SWIM,
 };
 
 struct type {
@@ -20,5 +21,6 @@ struct type {
 	PARENT_TOT_SWIM, "Parent and tot swim",
 	AFTER_SCHOOL_SWIM, "After School swim",
 	A11Y_SWIM, "Special needs swim",
+	PRESCHOOL_SWIM, "Preshcool swim",
 };
 

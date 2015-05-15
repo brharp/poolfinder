@@ -8,7 +8,7 @@ search.cgi: main.c places.h pools.h types.h days.h swimtab.h
 	cc -o $@ $<
 
 install: search.cgi
-	cp index.html $(htdocs)
+	cp *.html $(htdocs)
 	cp search.cgi $(cgi-bin)/search
 
 

@@ -70,6 +70,7 @@ int show_schedule(int placeid)
 	puts("</table>");
 }
 
+
 int list_places()
 {
 	int i;
@@ -85,12 +86,14 @@ int list_places()
 	puts("</ul>");
 }
 
+
 int main (int argc, char *argv[])
 {
 	char *query;
 	int placeid;
 	int placecnt = sizeof(placetab) / sizeof(placetab[0]);
 
+	setenv("TZ", "EST", 1);
 	query = getenv("QUERY_STRING");
 
 	if (query && sscanf(query, "q=%d", &placeid) == 1 

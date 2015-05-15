@@ -53,7 +53,7 @@ struct anchor {
 	GOULBOURN, "",
 	PURCELL, "",
 	KANATA, "",
-	LOWERTON, "",
+	LOWERTOWN, "",
 	MINTO, "",
 	NAPEAN, "",
 	PINECREST, "",
