@@ -70,6 +70,24 @@ enum pools {
 	SAWMILL,
 	STLAURENT,
 	BAKER,
+	RHODES,
+	GRETZKY,
+	ELGIN,
+	TIM_HORTON,
+	UXPOOL,
+	COMPLEX,
+	DUNBARTON,
+	COURTICE,
+	NEWCASTLE,
+
+	/* Oshawa */
+	OSHAWA_CENTENNIAL,
+	DONEVAN,
+	LEGENDS,
+	SOUTH_OSHAWA,
+
+	/* Windsor */
+	KNOX,
 };
 
 
@@ -141,5 +159,38 @@ struct pool {
 	SAWMILL, "Sawmill Creek Pool", 45.349556,-75.636167, 
 	STLAURENT, "St-Laurent Pool", 45.4355375,-75.6463672,
 	BAKER, "Walter Baker Pool", 45.280344,-75.761848,
+
+	/* Sault Ste Marie */
+	RHODES, "John Rhodes Community Centre", 46.509358,-84.302756,	
+
+	/* Brantford */
+	GRETZKY, "Wayne Gretzky Sports Centre", 43.167425,-80.265255,
+
+	/* Saugeen Shores */
+	ELGIN, "Centennial Pool", 44.4334762,-81.383263,
+
+	/* Cochrane */
+	TIM_HORTON, "Tim Horton Event Centre", 49.063393,-81.004794,
+
+	/* Uxbridge */
+	UXPOOL, "UxPool", 44.106131,-79.117154,
+
+	/* Pickering */
+	COMPLEX, "Pickering Recreation Complex", 43.839274,-79.08039,
+	DUNBARTON, "Dunbarton Indoor Pool", 43.8216313,-79.1190764,
+
+	/* Clarington */
+	COURTICE, "Courtice Community Complex", 43.913311,-78.782193,
+	NEWCASTLE, "Newcastle and District Recreation Complex", 43.912254,-78.600479,
+
+	/* Oshawa */
+	OSHAWA_CENTENNIAL, "Centennial Pool", 43.8872927,-78.8916305,
+	DONEVAN, "Donevan Recreation Complex", 43.9001587,-78.8321256,
+	LEGENDS, "Legends Centre Pool", 43.9464034,-78.8520165,
+	SOUTH_OSHAWA, "South Oshawa Community Centre", 43.859559,-78.846858,
+
+	/* Windsor */
+	KNOX, "Adie Knox Herman Complex", 42.3080563,-83.053792,
+
 };
 

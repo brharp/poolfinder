@@ -101,5 +101,7 @@ int main (int argc, char *argv[])
 		show_schedule(placeid);
 	else
 		list_places();
+
+	return(0);
 }
 
