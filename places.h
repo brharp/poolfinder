@@ -20,6 +20,7 @@ enum places {
 	CLARINGTON,
 	OSHAWA,
 	WINDSOR,
+	KINGSTON,
 };
 
 struct place {
@@ -48,5 +49,7 @@ struct place {
 	CLARINGTON, "Clarington", 43.9351657,-78.6075637,
 	OSHAWA, "Oshawa", 43.948872,-78.878351,
 	WINDSOR, "Windsor", 42.2926987,-83.002882,
+	KINGSTON, "Kingston", 44.3442157,-76.4733248,
+
 };
 

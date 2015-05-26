@@ -50,7 +50,6 @@ enum pools {
 	STONEY_CREEK,
 	VALLEY_PARK,
 	WESTMOUNT,
-
 	MACQUARRIE,
 	BREWER,
 	CANTERBURY,
@@ -88,6 +87,9 @@ enum pools {
 
 	/* Windsor */
 	KNOX,
+
+	/* Kingston */
+	ARTILLERY_PARK,
 };
 
 
@@ -191,6 +193,9 @@ struct pool {
 
 	/* Windsor */
 	KNOX, "Adie Knox Herman Complex", 42.3080563,-83.053792,
+
+	/* Kingston */
+	ARTILLERY_PARK, "Artillery Park", 44.2342718,-76.4844843,
 
 };
 

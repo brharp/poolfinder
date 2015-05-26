@@ -77,5 +77,7 @@ struct anchor {
 	LEGENDS, "http://www.oshawa.ca/mun_res/recreation/swimming-schedules.asp",
 	SOUTH_OSHAWA, "http://www.oshawa.ca/mun_res/recreation/swimming-schedules.asp",
 	KNOX, "http://www.citywindsor.ca/residents/Recreation/aquatics/Recreation-Swimming/Pages/Recreation-Swimming.aspx",
+	ARTILLERY_PARK, "https://www.cityofkingston.ca/residents/recreation/facilities/aquatic-facilities/artillery-park",
+
 };
 
