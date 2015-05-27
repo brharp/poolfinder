@@ -21,6 +21,10 @@ enum places {
 	OSHAWA,
 	WINDSOR,
 	KINGSTON,
+	BELLEVILLE,
+	KAWARTHA,
+	BOBCAYGEON,
+	KENORA,
 };
 
 struct place {
@@ -50,6 +54,9 @@ struct place {
 	OSHAWA, "Oshawa", 43.948872,-78.878351,
 	WINDSOR, "Windsor", 42.2926987,-83.002882,
 	KINGSTON, "Kingston", 44.3442157,-76.4733248,
-
+	BELLEVILLE, "Belleville", 44.2430423,-77.361139,
+	KAWARTHA, "Kawartha Lakes", 44.5220115,-78.817108,
+	BOBCAYGEON, "Bobcaygeon", 44.5418384,-78.5459001,
+	KENORA, "Kenora", 49.8220232,-94.466617,
 };
 

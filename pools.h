@@ -90,6 +90,16 @@ enum pools {
 
 	/* Kingston */
 	ARTILLERY_PARK,
+
+	/* Belleville */
+	MENNINGA,
+
+	/* Kawartha */
+	LINDSAY,
+	FORBERT,
+
+	/* Kenora */
+	KENORA_REC,
 };
 
 
@@ -196,6 +206,16 @@ struct pool {
 
 	/* Kingston */
 	ARTILLERY_PARK, "Artillery Park", 44.2342718,-76.4844843,
+
+	/* Belleville */
+	MENNINGA, "Templeman Menninga Aquatic Centre", 44.187628,-77.38259,
+
+	/* Kawartha */
+	LINDSAY, "Lindsay Recreation Complex", 44.341629,-78.743632,
+	FORBERT, "Forbert Memorial Pool", 44.531365,-78.526534,
+
+	/* Kenora */
+	KENORA_REC, "Kenora Recreation Centre", 49.7618637,-94.4857155,
 
 };
 

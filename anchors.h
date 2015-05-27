@@ -78,6 +78,10 @@ struct anchor {
 	SOUTH_OSHAWA, "http://www.oshawa.ca/mun_res/recreation/swimming-schedules.asp",
 	KNOX, "http://www.citywindsor.ca/residents/Recreation/aquatics/Recreation-Swimming/Pages/Recreation-Swimming.aspx",
 	ARTILLERY_PARK, "https://www.cityofkingston.ca/residents/recreation/facilities/aquatic-facilities/artillery-park",
+	MENNINGA, "http://quintesportsandwellnesscentre.ca/?page_id=10",
+	LINDSAY, "http://www.city.kawarthalakes.on.ca/residents/parks-recreation-culture/aquatics-swimming/public-swim-schedule",
+	FORBERT, "http://www.city.kawarthalakes.on.ca/residents/parks-recreation-culture/aquatics-swimming/public-swim-schedule",
+	KENORA, "http://www.kenora.ca/living/be-active/kenora-recreation-centre/aquatics.aspx",
 
 };
 
