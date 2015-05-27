@@ -25,6 +25,8 @@ enum places {
 	KAWARTHA,
 	BOBCAYGEON,
 	KENORA,
+	PERTH,
+	CARLETON_PLACE,
 };
 
 struct place {
@@ -58,5 +60,8 @@ struct place {
 	KAWARTHA, "Kawartha Lakes", 44.5220115,-78.817108,
 	BOBCAYGEON, "Bobcaygeon", 44.5418384,-78.5459001,
 	KENORA, "Kenora", 49.8220232,-94.466617,
+	PERTH, "Perth", 44.899109,-76.2500711,
+	CARLETON_PLACE, "Carleton Place", 45.1384685,-76.138803,
+
 };
 

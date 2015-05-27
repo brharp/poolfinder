@@ -100,6 +100,12 @@ enum pools {
 
 	/* Kenora */
 	KENORA_REC,
+
+	/* Perth */
+	PERTH_INDOOR,
+
+	/* Carleton Place */
+	CARLETON_POOL,
 };
 
 
@@ -216,6 +222,12 @@ struct pool {
 
 	/* Kenora */
 	KENORA_REC, "Kenora Recreation Centre", 49.7618637,-94.4857155,
+
+	/* Perth */
+	PERTH_INDOOR, "Perth Indoor Pool", 44.9045592,-76.2602142,
+
+	/* Carleton Place */
+	CARLETON_POOL, "Carleton Place Aquatic Centre", 45.1445835,-76.1516685,
 
 };
 

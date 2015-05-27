@@ -81,7 +81,8 @@ struct anchor {
 	MENNINGA, "http://quintesportsandwellnesscentre.ca/?page_id=10",
 	LINDSAY, "http://www.city.kawarthalakes.on.ca/residents/parks-recreation-culture/aquatics-swimming/public-swim-schedule",
 	FORBERT, "http://www.city.kawarthalakes.on.ca/residents/parks-recreation-culture/aquatics-swimming/public-swim-schedule",
-	KENORA, "http://www.kenora.ca/living/be-active/kenora-recreation-centre/aquatics.aspx",
-
+	KENORA_REC, "http://www.kenora.ca/living/be-active/kenora-recreation-centre/aquatics.aspx",
+	PERTH_INDOOR, "http://www.perth.ca/content/perth-and-district-indoor-swimming-pool",
+	CARLETON_POOL, "http://carletonplace.ca/poolp8.php",
 };
 
