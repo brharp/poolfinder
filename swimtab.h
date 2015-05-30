@@ -1,3 +1,7 @@
+#pragma once
+#include "pools.h"
+#include "types.h"
+#include "days.h"
 
 struct swim {
 	int pool;

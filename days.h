@@ -1,3 +1,4 @@
+#pragma once
 
 enum days_of_the_week {
 	SU = 1, MO = 2, TU = 4, WE = 8, TH = 16, FR = 32, SA = 64

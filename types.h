@@ -1,3 +1,4 @@
+#pragma once
 
 enum types {
 	PUBLIC_SWIM,

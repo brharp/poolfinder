@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include "data.h"
+#include "template.h"
 
 int day_of_week()
 {
@@ -33,6 +34,9 @@ int swimcompar(const void *p1, const void *p2)
 
 int show_schedule(int placeid)
 {
+	FILE *buffer;
+	char *content;
+	size_t contentlen;
 	int dow;
 	int swimcnt;
 	int i;
@@ -42,10 +46,14 @@ int show_schedule(int placeid)
 	dow = day_of_week();
 	swimcnt = sizeof(swimtab) / sizeof(swimtab[0]);
 
+	/*
 	printf("<h1>%s <small>%s</small></h1>\n",
 		dowtab[dow].print_name, placetab[placeid].print_name);
+	*/
 
-	puts("<table class='table table-bordered table-striped'>");
+	buffer = open_memstream(&content, &contentlen);
+
+	fputs("<table class='table table-bordered table-striped'>", buffer);
 
 	qsort(swimtab, swimcnt, sizeof(swimtab[0]), swimcompar);
 
@@ -57,7 +65,8 @@ int show_schedule(int placeid)
 			int h = s / 100;
 			int m = s % 100;
 			int d = ((e/100-h) * 60) + (e%100-m);
-			printf("<tr><th class='text-right'>%d:%02d %cm</th><td>"
+			fprintf(buffer,
+			       "<tr><th class='text-right'>%d:%02d %cm</th><td>"
 			       "<div class='text-success'>%s</div>"
 			       "<div class='text-muted'>%d min "
 			       "(<a href='%s'>%s</a>)</div></td></tr>\n",
@@ -67,7 +76,14 @@ int show_schedule(int placeid)
 				pooltab[swimtab[i].pool].print_name);
 		}
 	}
-	puts("</table>");
+	fputs("</table>", buffer);
+
+	fclose(buffer);
+
+	page(stdout, dowtab[dow].print_name, placetab[placeid].print_name,
+		content);
+
+	free(content);
 }
 
 
@@ -75,15 +91,23 @@ int list_places()
 {
 	int i;
 	int placecnt = sizeof(placetab) / sizeof(placetab[0]);
+	FILE *buffer;
+	char *content;
+	size_t contentlen;
 
 	printf("Content-type: text/html\n\n");
 
-	puts("<ul class='nav nav-pills'>");
+	buffer = open_memstream(&content, &contentlen);
+	fprintf(buffer, "<ul class='nav nav-pills'>");
 	for (i = 0; i < placecnt; i++) {
-		printf("<li role='presentation'><a href='?q=%d'>%s</a></li>\n",
+		fprintf(buffer, "<li role='presentation'><a href='?q=%d'>%s</a></li>\n",
 			placetab[i].id, placetab[i].print_name);
 	}
-	puts("</ul>");
+	fprintf(buffer, "</ul>");
+	fclose(buffer);
+
+	page(stdout, "Find pools near...", NULL, content);
+	free(content);
 }
 
 
