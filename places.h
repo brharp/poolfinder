@@ -27,6 +27,9 @@ enum places {
 	KENORA,
 	PERTH,
 	CARLETON_PLACE,
+	LONDON,
+	BRACEBRIDGE,
+	HUNTSVILLE,
 };
 
 struct place {
@@ -62,6 +65,9 @@ struct place {
 	KENORA, "Kenora", 49.8220232,-94.466617,
 	PERTH, "Perth", 44.899109,-76.2500711,
 	CARLETON_PLACE, "Carleton Place", 45.1384685,-76.138803,
+	LONDON, "London", 42.948881,-81.24862,
+	BRACEBRIDGE, "Bracebridge", 45.0473006,-79.1919703,
+	HUNTSVILLE, "Huntsville", 45.3052834,-79.2836478,
 
 };
 

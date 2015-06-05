@@ -84,5 +84,11 @@ struct anchor {
 	KENORA_REC, "http://www.kenora.ca/living/be-active/kenora-recreation-centre/aquatics.aspx",
 	PERTH_INDOOR, "http://www.perth.ca/content/perth-and-district-indoor-swimming-pool",
 	CARLETON_POOL, "http://carletonplace.ca/poolp8.php",
+	CANADA_GAMES, "https://www.london.ca/residents/Recreation/Aquatics/Pages/rec-and-leisure-swimming.aspx",
+	CARLING_HEIGHTS, "https://www.london.ca/residents/Recreation/Aquatics/Pages/rec-and-leisure-swimming.aspx",
+	SOUTH_LONDON, "https://www.london.ca/residents/Recreation/Aquatics/Pages/rec-and-leisure-swimming.aspx",
+	BRACEBRIDGE_SPORTSPLEX, "",
+	HUNTSVILLE_POOL, "http://www.huntsville.ca/en/living/IndoorPools.asp",
 };
+
 

@@ -107,6 +107,14 @@ enum pools {
 
 	/* Carleton Place */
 	CARLETON_POOL,
+
+	/* London */
+	CANADA_GAMES,
+	CARLING_HEIGHTS,
+	SOUTH_LONDON,
+
+	BRACEBRIDGE_SPORTSPLEX,
+	HUNTSVILLE_POOL,
 };
 
 
@@ -230,5 +238,13 @@ struct pool {
 	/* Carleton Place */
 	CARLETON_POOL, "Carleton Place Aquatic Centre", 45.1445835,-76.1516685,
 
+	/* London */
+	CANADA_GAMES, "Canada Games Aquatic Centre", 43.000961,-81.301542,
+	CARLING_HEIGHTS, "Carling Heights Optimist C.C. Pool", 42.998222,-81.228842,
+	SOUTH_LONDON, "South London Community Pool", 42.933212,-81.231944,
+
+	BRACEBRIDGE_SPORTSPLEX, "Bracebridge Sportsplex", 45.065231,-79.320232,
+
+	HUNTSVILLE_POOL, "Huntsville Centennial Pool", 45.3230102,-79.2133462,
 };
 
