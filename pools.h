@@ -115,6 +115,21 @@ enum pools {
 
 	BRACEBRIDGE_SPORTSPLEX,
 	HUNTSVILLE_POOL,
+
+	NIPISSING,
+	NORTH_BAY_YMCA,
+
+	NORTHUMBERLAND_YMCA,
+
+	/* Woodstock */
+	SOUTHSIDE,
+
+	/* Brampton */
+	BALMORAL,
+	CAMPBELL,
+	
+	/* Perth */
+	STRATFORD_YMCA,
 };
 
 
@@ -246,5 +261,23 @@ struct pool {
 	BRACEBRIDGE_SPORTSPLEX, "Bracebridge Sportsplex", 45.065231,-79.320232,
 
 	HUNTSVILLE_POOL, "Huntsville Centennial Pool", 45.3230102,-79.2133462,
+
+	/* Nipissing */
+	NIPISSING, "West Nipissing Community and Recreation Centre", 46.3659693,-79.9170673,
+	NORTH_BAY_YMCA, "North Bay YMCA", 46.316283,-79.449618,
+
+	/* Northumberland */
+	NORTHUMBERLAND_YMCA, "YMCA Northumberland", 43.974009,-78.186626,
+
+	/* Woodstock */
+	SOUTHSIDE, "Southside Aquatic Centre", 43.119156,-80.753334,
+
+	/* Brampton */
+	BALMORAL, "Balmoral", 43.708466,-79.71235,
+	CAMPBELL, "Cassie Campbell", 43.6974107,-79.8261862,
+
+	/* Perth */
+	STRATFORD_YMCA, "Stratford Perth YMCA", 43.3669226,-80.9802868,
+
 };
 

@@ -89,6 +89,11 @@ struct anchor {
 	SOUTH_LONDON, "https://www.london.ca/residents/Recreation/Aquatics/Pages/rec-and-leisure-swimming.aspx",
 	BRACEBRIDGE_SPORTSPLEX, "",
 	HUNTSVILLE_POOL, "http://www.huntsville.ca/en/living/IndoorPools.asp",
+	NIPISSING, "http://www.westnipissing.ca/municipal-services-e/community-services/west-nipissing-community-recreation-centre",
+	NORTH_BAY_YMCA, "http://www.ymcanorthbay.com/aquatics/open-swim-schedule/",
+	NORTHUMBERLAND_YMCA, "http://www.ymcanorthumberland.com/",
+	STRATFORD_YMCA, "http://www.stratfordperthymca.com/aquatics.html",
+	
 };
 
 
