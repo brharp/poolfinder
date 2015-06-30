@@ -92,8 +92,21 @@ struct anchor {
 	NIPISSING, "http://www.westnipissing.ca/municipal-services-e/community-services/west-nipissing-community-recreation-centre",
 	NORTH_BAY_YMCA, "http://www.ymcanorthbay.com/aquatics/open-swim-schedule/",
 	NORTHUMBERLAND_YMCA, "http://www.ymcanorthumberland.com/",
+	SOUTHSIDE, "",
+	BALMORAL, "", 
+	CAMPBELL, "",
 	STRATFORD_YMCA, "http://www.stratfordperthymca.com/aquatics.html",
-	
+	PETERBOROUGH_SWC, "http://www.peterborough.ca/Living/Recreation/PSWC/Aquatics/Swim_Schedules.htm",
+	CLARKSON, "http://dropin.mississauga.ca/default.asp?subsectionid=22",
+	MEADOWS, "http://dropin.mississauga.ca/default.asp?subsectionid=22",
+	MCKECHNIE, "http://dropin.mississauga.ca/default.asp?subsectionid=22",
+	GLENFOREST, "http://dropin.mississauga.ca/default.asp?subsectionid=22",
+	HURON, "http://dropin.mississauga.ca/default.asp?subsectionid=22",
+	MALTON, "http://dropin.mississauga.ca/default.asp?subsectionid=22",
+	VALLEY, "http://dropin.mississauga.ca/default.asp?subsectionid=22",
+	RIVER_GROVE, "http://dropin.mississauga.ca/default.asp?subsectionid=22",
+	SOUTH_COMMON, "http://dropin.mississauga.ca/default.asp?subsectionid=22",
+	CAWTHRA, "http://dropin.mississauga.ca/default.asp?subsectionid=22",
 };
 
 

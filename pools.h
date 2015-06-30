@@ -130,6 +130,21 @@ enum pools {
 	
 	/* Perth */
 	STRATFORD_YMCA,
+
+	/* Peterborough */
+	PETERBOROUGH_SWC,
+
+	/* Mississauga */
+	CLARKSON,
+	MEADOWS,
+	MCKECHNIE,
+	GLENFOREST,
+	HURON,
+	MALTON,
+	VALLEY,
+	RIVER_GROVE,
+	SOUTH_COMMON,
+	CAWTHRA,
 };
 
 
@@ -278,6 +293,21 @@ struct pool {
 
 	/* Perth */
 	STRATFORD_YMCA, "Stratford Perth YMCA", 43.3669226,-80.9802868,
+
+	/* Peterborough */
+	PETERBOROUGH_SWC, "Sport and Wellness Centre", 44.2736831,-78.3730531,
+
+	/* Mississauga */
+	CLARKSON, "Clarkson Community Centre", 43.5107545,-79.6492383,
+	MEADOWS, "Erin Meadows Community Centre", 43.5564095,-79.7175424,
+	MCKECHNIE, "Frank McKechnie Community Centre", 43.6164696,-79.6530655,
+	GLENFOREST, "Glenforest Secondary School", 43.6274314,-79.5943421,
+	HURON, "Huron Park Community Centre", 43.5592486,-79.6330527,
+	MALTON, "Malton Community Centre", 43.7236913,-79.6386369,
+	VALLEY, "Mississauga Valley CC", 43.597238,-79.623552,
+	RIVER_GROVE, "River Grove CC", 43.5894771,-79.7122369,
+	SOUTH_COMMON, "South Common CC", 43.5424192,-79.6848811,
+	CAWTHRA, "Cawthra Park Secondary School", 43.5761055,-79.5732007,
 
 };
 

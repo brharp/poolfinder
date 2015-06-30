@@ -34,6 +34,8 @@ enum places {
 	NORTH_BAY,
 	COBOURG,
 	STRATFORD,
+	PETERBOROUGH,
+	MISSISSAUGA,
 };
 
 struct place {
@@ -76,6 +78,7 @@ struct place {
 	NORTH_BAY, "North Bay", 46.337588,-79.3805355,
 	COBOURG, "Cobourg", 43.9728264,-78.1679332,
 	STRATFORD, "Stratford", 43.3688236,-80.984248,
-
+	PETERBOROUGH, "Peterborough", 44.3151945,-78.3255739,
+	MISSISSAUGA, "Mississauga", 43.6091545,-79.6763878,
 };
 
