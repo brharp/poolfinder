@@ -87,21 +87,24 @@ int show_schedule(int placeid)
 }
 
 
-int list_places()
+void list_places()
 {
 	int i;
 	int placecnt = sizeof(placetab) / sizeof(placetab[0]);
 	FILE *buffer;
 	char *content;
 	size_t contentlen;
+	char *script;
 
 	printf("Content-type: text/html\n\n");
+
+	script = getenv("SCRIPT_NAME");
 
 	buffer = open_memstream(&content, &contentlen);
 	fprintf(buffer, "<ul class='nav nav-pills'>");
 	for (i = 0; i < placecnt; i++) {
-		fprintf(buffer, "<li role='presentation'><a href='?q=%d'>%s</a></li>\n",
-			placetab[i].id, placetab[i].print_name);
+		fprintf(buffer, "<li role='presentation'><a href='%s%s?q=%d'>%s</a></li>\n",
+			script, "schedule", placetab[i].id, placetab[i].print_name);
 	}
 	fprintf(buffer, "</ul>");
 	fclose(buffer);
@@ -111,20 +114,42 @@ int list_places()
 }
 
 
-int main (int argc, char *argv[])
+void schedule()
 {
-	char *query;
 	int placeid;
 	int placecnt = sizeof(placetab) / sizeof(placetab[0]);
+	char *query;
 
-	setenv("TZ", "EST", 1);
 	query = getenv("QUERY_STRING");
-
 	if (query && sscanf(query, "q=%d", &placeid) == 1 
 		&& placeid >= 0 && placeid < placecnt)
 		show_schedule(placeid);
 	else
-		list_places();
+		printf("Status: 404 Not found\n\n");
+}
+
+
+#include "menu.h"
+
+int main (int argc, char *argv[])
+{
+	char *query, *pathinfo;
+	int menucnt = sizeof(menutab) / sizeof(menutab[0]);
+	int menuid;
+
+	setenv("TZ", "EST", 1);
+	pathinfo = getenv("PATH_INFO");
+
+	for (menuid = 0; menuid < menucnt; menuid++) {
+		if (strcmp(menutab[menuid].path, pathinfo) == 0) {
+			menutab[menuid].action();
+			break;
+		}
+	}
+
+	if (menuid == menucnt) {
+		printf("Status: 404 Not found\n\n");
+	}
 
 	return(0);
 }

@@ -145,6 +145,20 @@ enum pools {
 	VALLEY,
 	RIVER_GROVE,
 	SOUTH_COMMON,
+
+	/* Woodstock */
+	SAC,
+
+	/* Vaughan */
+	PALLADINI,
+	CHANCELLOR,
+	CLARK,
+	BULFON,
+	WILLIAMS,
+	MAPLE,
+	THORNHILL,
+	VELLORE,
+	WOODBRIDGE,
 };
 
 
@@ -309,5 +323,18 @@ struct pool {
 	SOUTH_COMMON, "South Common CC", 43.5424192,-79.6848811,
 	CAWTHRA, "Cawthra Park Secondary School", 43.5761055,-79.5732007,
 
+	/* Woodstock */
+	SAC, "Southside Aquatic Centre", 43.1191559,-80.7533341,
+
+	/* Vaughan */
+	PALLADINI, "Al Palladini Pool", 43.8165286,-79.5972051, 
+	CHANCELLOR, "Chancellor Pool", 43.7958024,-79.5627496,
+	CLARK, "Dufferin Clark Pool", 43.7975519,-79.4703265,
+	BULFON, "Father E. Bulfon Pool", 43.7868906,-79.6118594,
+	WILLIAMS, "Garnet A. Williams Pool", 43.8039072,-79.4400473,
+	MAPLE, "Maple Pool", 43.8595535,-79.514656,
+	THORNHILL, "North Thornhill Pool", 43.832886,-79.476015,
+	VELLORE, "Vellore Village Pool", 43.8363021,-79.5598102,
+	WOODBRIDGE, "Woodbridge Pool",  43.7811944,-79.5904399,
 };
 

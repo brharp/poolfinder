@@ -107,6 +107,17 @@ struct anchor {
 	VALLEY, "http://dropin.mississauga.ca/default.asp?subsectionid=22",
 	RIVER_GROVE, "http://dropin.mississauga.ca/default.asp?subsectionid=22",
 	SOUTH_COMMON, "http://dropin.mississauga.ca/default.asp?subsectionid=22",
+	SAC, "http://www.cityofwoodstock.ca/en/city-hall/southside-aquatic-centre.asp",
+
+	PALLADINI, "https://www.vaughan.ca/services/recreation/Swimming/Pages/default.aspx",
+	CHANCELLOR, "https://www.vaughan.ca/services/recreation/Swimming/Pages/default.aspx",
+	CLARK, "https://www.vaughan.ca/services/recreation/Swimming/Pages/default.aspx",
+	BULFON, "https://www.vaughan.ca/services/recreation/Swimming/Pages/default.aspx",
+	WILLIAMS, "https://www.vaughan.ca/services/recreation/Swimming/Pages/default.aspx",
+	MAPLE, "https://www.vaughan.ca/services/recreation/Swimming/Pages/default.aspx",
+	THORNHILL, "https://www.vaughan.ca/services/recreation/Swimming/Pages/default.aspx",
+	VELLORE, "https://www.vaughan.ca/services/recreation/Swimming/Pages/default.aspx",
+	WOODBRIDGE, "https://www.vaughan.ca/services/recreation/Swimming/Pages/default.aspx",
 };
 
 

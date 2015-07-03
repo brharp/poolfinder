@@ -36,6 +36,9 @@ enum places {
 	STRATFORD,
 	PETERBOROUGH,
 	MISSISSAUGA,
+	WOODSTOCK,
+	VAUGHAN,
+
 };
 
 struct place {
@@ -80,5 +83,8 @@ struct place {
 	STRATFORD, "Stratford", 43.3688236,-80.984248,
 	PETERBOROUGH, "Peterborough", 44.3151945,-78.3255739,
 	MISSISSAUGA, "Mississauga", 43.6091545,-79.6763878,
+	WOODSTOCK, "Woodstock", 43.1304559,-80.73805,
+	VAUGHAN, "Vaughan", 43.837085,-79.565941,
+
 };
 
