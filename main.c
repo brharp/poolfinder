@@ -4,6 +4,7 @@
 #include <math.h>
 #include "data.h"
 #include "template.h"
+#include "menu.h"
 
 int day_of_week()
 {
@@ -104,7 +105,8 @@ void list_places()
 	fprintf(buffer, "<ul class='nav nav-pills'>");
 	for (i = 0; i < placecnt; i++) {
 		fprintf(buffer, "<li role='presentation'><a href='%s%s?q=%d'>%s</a></li>\n",
-			script, "schedule", placetab[i].id, placetab[i].print_name);
+			script, menu_get_path(MENUITEM_SCHEDULE), placetab[i].id,
+			placetab[i].print_name);
 	}
 	fprintf(buffer, "</ul>");
 	fclose(buffer);
@@ -129,7 +131,30 @@ void schedule()
 }
 
 
-#include "menu.h"
+struct menuitem {
+	int id;
+	char *path;
+	void (*action)(void);
+} menutab[] = {
+	MENUITEM_SCHEDULE, "schedule", schedule,
+	MENUITEM_HOME,     "",         list_places,
+};
+
+
+char *menu_get_path(int id)
+{
+	int menucnt = sizeof(menutab) / sizeof(menutab[0]);
+	int menuid;
+
+	for (menuid = 0; menuid < menucnt; menuid++) {
+		if (menuid == id) {
+			return menutab[id].path;
+		}
+	}
+
+	return NULL;
+}
+
 
 int main (int argc, char *argv[])
 {
@@ -141,7 +166,7 @@ int main (int argc, char *argv[])
 	pathinfo = getenv("PATH_INFO");
 
 	for (menuid = 0; menuid < menucnt; menuid++) {
-		if (strcmp(menutab[menuid].path, pathinfo) == 0) {
+		if (strcmp(menutab[menuid].path, pathinfo+1) == 0) {
 			menutab[menuid].action();
 			break;
 		}

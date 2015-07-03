@@ -4,13 +4,5 @@ enum menuitems {
 	MENUITEM_HOME
 };
 
-struct menuitem {
-	int id;
-	char *path;
-	void (*action)(void);
-} menutab[] = {
-	MENUITEM_SCHEDULE, "/schedule", schedule,
-	MENUITEM_HOME,     "/",         list_places,
-};
-
+char *menu_get_path(int id);
 
