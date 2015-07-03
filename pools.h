@@ -135,6 +135,7 @@ enum pools {
 	PETERBOROUGH_SWC,
 
 	/* Mississauga */
+	CAWTHRA,
 	CLARKSON,
 	MEADOWS,
 	MCKECHNIE,
@@ -144,7 +145,6 @@ enum pools {
 	VALLEY,
 	RIVER_GROVE,
 	SOUTH_COMMON,
-	CAWTHRA,
 };
 
 

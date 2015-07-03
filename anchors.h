@@ -97,6 +97,7 @@ struct anchor {
 	CAMPBELL, "",
 	STRATFORD_YMCA, "http://www.stratfordperthymca.com/aquatics.html",
 	PETERBOROUGH_SWC, "http://www.peterborough.ca/Living/Recreation/PSWC/Aquatics/Swim_Schedules.htm",
+	CAWTHRA, "http://dropin.mississauga.ca/default.asp?subsectionid=22",
 	CLARKSON, "http://dropin.mississauga.ca/default.asp?subsectionid=22",
 	MEADOWS, "http://dropin.mississauga.ca/default.asp?subsectionid=22",
 	MCKECHNIE, "http://dropin.mississauga.ca/default.asp?subsectionid=22",
@@ -106,7 +107,6 @@ struct anchor {
 	VALLEY, "http://dropin.mississauga.ca/default.asp?subsectionid=22",
 	RIVER_GROVE, "http://dropin.mississauga.ca/default.asp?subsectionid=22",
 	SOUTH_COMMON, "http://dropin.mississauga.ca/default.asp?subsectionid=22",
-	CAWTHRA, "http://dropin.mississauga.ca/default.asp?subsectionid=22",
 };
 
 
