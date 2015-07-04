@@ -2,7 +2,7 @@
 htdocs=/var/www
 cgi-bin=/usr/lib/cgi-bin
 
-all: install
+all: search.cgi
 
 search.cgi: main.c template.c 
 	cc -g -o $@ $^
