@@ -38,6 +38,7 @@ enum places {
 	MISSISSAUGA,
 	WOODSTOCK,
 	VAUGHAN,
+	MARKHAM,
 
 };
 
@@ -85,6 +86,7 @@ struct place {
 	MISSISSAUGA, "Mississauga", 43.6091545,-79.6763878,
 	WOODSTOCK, "Woodstock", 43.1304559,-80.73805,
 	VAUGHAN, "Vaughan", 43.837085,-79.565941,
+	MARKHAM, "Markham", 43.8807391,-79.2995385,
 
 };
 

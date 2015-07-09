@@ -118,6 +118,17 @@ struct anchor {
 	THORNHILL, "https://www.vaughan.ca/services/recreation/Swimming/Pages/default.aspx",
 	VELLORE, "https://www.vaughan.ca/services/recreation/Swimming/Pages/default.aspx",
 	WOODBRIDGE, "https://www.vaughan.ca/services/recreation/Swimming/Pages/default.aspx",
+
+  	/* Markham */
+        ANGUS_GLEN, "http://www.markham.ca/wps/portal/Markham/RecreationCulture/ProgramsActivities/Swimming/",
+        MARKHAM_CEN, "http://www.markham.ca/wps/portal/Markham/RecreationCulture/ProgramsActivities/Swimming/",
+        CORNELL, "http://www.markham.ca/wps/portal/Markham/RecreationCulture/ProgramsActivities/Swimming/",
+        MILLIKEN, "http://www.markham.ca/wps/portal/Markham/RecreationCulture/ProgramsActivities/Swimming/",
+        MORGAN, "http://www.markham.ca/wps/portal/Markham/RecreationCulture/ProgramsActivities/Swimming/",
+        THORNHILL2, "http://www.markham.ca/wps/portal/Markham/RecreationCulture/ProgramsActivities/Swimming/",
+        THORNLEA, "http://www.markham.ca/wps/portal/Markham/RecreationCulture/ProgramsActivities/Swimming/",
+        ROUGE_RIVER, "http://www.markham.ca/wps/portal/Markham/RecreationCulture/ProgramsActivities/Swimming/",
+
 };
 
 

@@ -159,6 +159,17 @@ enum pools {
 	THORNHILL,
 	VELLORE,
 	WOODBRIDGE,
+	
+	/* Markham */
+	ANGUS_GLEN,
+	MARKHAM_CEN,
+	CORNELL,
+	MILLIKEN,
+	MORGAN,
+	THORNHILL2,
+	THORNLEA,
+	ROUGE_RIVER,
+
 };
 
 
@@ -336,5 +347,16 @@ struct pool {
 	THORNHILL, "North Thornhill Pool", 43.832886,-79.476015,
 	VELLORE, "Vellore Village Pool", 43.8363021,-79.5598102,
 	WOODBRIDGE, "Woodbridge Pool",  43.7811944,-79.5904399,
+
+	/* Markham */
+	ANGUS_GLEN, "Angus Glen Pool", 43.8946514,-79.33575,
+	MARKHAM_CEN, "Centennial Pool", 43.8731853,-79.2871618,
+	CORNELL, "Cornell Pool", 43.8844737,-79.2290909,
+	MILLIKEN, "Milliken Mills Pool", 43.8400096,-79.3053285,
+	MORGAN, "Morgan Pool (Outdoor)", 43.8807628,-79.2592862,
+	THORNHILL2, "Thornhill Therapeutic Pool", 43.8196108,-79.4002282,
+	THORNLEA, "Thornlea Pool", 43.8286475,-79.4035466,
+	ROUGE_RIVER, "Rouge River Pool (Outdoor)", 43.8608978,-79.2407503,
+
 };
 
