@@ -39,6 +39,7 @@ enum places {
 	WOODSTOCK,
 	VAUGHAN,
 	MARKHAM,
+	NEWMARKET,
 
 };
 
@@ -87,6 +88,8 @@ struct place {
 	WOODSTOCK, "Woodstock", 43.1304559,-80.73805,
 	VAUGHAN, "Vaughan", 43.837085,-79.565941,
 	MARKHAM, "Markham", 43.8807391,-79.2995385,
+	NEWMARKET, "Newmarket", 44.0502815,-79.461206,
+	
 
 };
 

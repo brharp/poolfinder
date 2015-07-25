@@ -129,6 +129,10 @@ struct anchor {
         THORNLEA, "http://www.markham.ca/wps/portal/Markham/RecreationCulture/ProgramsActivities/Swimming/",
         ROUGE_RIVER, "http://www.markham.ca/wps/portal/Markham/RecreationCulture/ProgramsActivities/Swimming/",
 
+	MAGNA, "http://www.newmarket.ca/en/townhall/swimmingschedulesfeesinformation.asp",
+        RTRC, "http://www.newmarket.ca/en/townhall/swimmingschedulesfeesinformation.asp",
+        GORMAN, "http://www.newmarket.ca/en/townhall/swimmingschedulesfeesinformation.asp",
+
 };
 
 

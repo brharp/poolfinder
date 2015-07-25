@@ -170,6 +170,11 @@ enum pools {
 	THORNLEA,
 	ROUGE_RIVER,
 
+	/* Newmarket */
+	MAGNA,
+	RTRC,
+	GORMAN,
+
 };
 
 
@@ -357,6 +362,10 @@ struct pool {
 	THORNHILL2, "Thornhill Therapeutic Pool", 43.8196108,-79.4002282,
 	THORNLEA, "Thornlea Pool", 43.8286475,-79.4035466,
 	ROUGE_RIVER, "Rouge River Pool (Outdoor)", 43.8608978,-79.2407503,
+
+	MAGNA, "Metro Aquatic Centre", 44.044555,-79.437712,
+	RTRC, "Ray Twinney Recreation Complex", 44.0441356,-79.4880862,
+	GORMAN, "Gorman Pool", 44.0508237,-79.4594831,
 
 };
 
