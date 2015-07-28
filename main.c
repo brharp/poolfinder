@@ -22,7 +22,7 @@ int islocal(int placeid, int poolid)
 {
 	float dx = fabsf(placetab[placeid].lat - pooltab[poolid].lat);
 	float dy = fabsf(placetab[placeid].lng - pooltab[poolid].lng);
-	return dx < 0.2 && dy < 0.2;
+	return dx < 0.1 && dy < 0.1;
 }
 
 int swimcompar(const void *p1, const void *p2)

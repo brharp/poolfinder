@@ -4,7 +4,7 @@ cgi-bin=/usr/lib/cgi-bin
 
 all: search.cgi
 
-search.cgi: main.c template.c 
+search.cgi: main.c template.c swimtab.h
 	cc -g -o $@ $^
 
 install: search.cgi
