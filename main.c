@@ -33,6 +33,14 @@ int swimcompar(const void *p1, const void *p2)
 	return (sp1->start - sp2->start);
 }
 
+int placecompar(const void *p1, const void *p2)
+{
+	const struct place *place1 = p1;
+	const struct place *place2 = p2;
+
+	return strcoll(place1->print_name, place2->print_name);
+}
+	
 int show_schedule(int placeid)
 {
 	FILE *buffer;
@@ -46,11 +54,6 @@ int show_schedule(int placeid)
 
 	dow = day_of_week();
 	swimcnt = sizeof(swimtab) / sizeof(swimtab[0]);
-
-	/*
-	printf("<h1>%s <small>%s</small></h1>\n",
-		dowtab[dow].print_name, placetab[placeid].print_name);
-	*/
 
 	buffer = open_memstream(&content, &contentlen);
 
@@ -101,6 +104,8 @@ void list_places()
 
 	script = getenv("SCRIPT_NAME");
 
+	qsort(placetab, placecnt, sizeof(placetab[0]), placecompar);
+
 	buffer = open_memstream(&content, &contentlen);
 	fprintf(buffer, "<ul class='nav nav-pills'>");
 	for (i = 0; i < placecnt; i++) {
@@ -116,7 +121,7 @@ void list_places()
 }
 
 
-void schedule()
+void schedule_action()
 {
 	int placeid;
 	int placecnt = sizeof(placetab) / sizeof(placetab[0]);
@@ -131,13 +136,91 @@ void schedule()
 }
 
 
+void pools_action()
+{
+	int i;
+	int poolcnt = sizeof(pooltab) / sizeof(pooltab[0]);
+	FILE *buffer;
+	char *content;
+	size_t contentlen;
+	
+	printf("Content-type: text/html\n\n");
+	buffer = open_memstream(&content, &contentlen);
+	fprintf(buffer, "<table class='table table-striped table-bordered'>\n");
+	fprintf(buffer, "<tr><th>Pool</th><th>Last modified</th><th>Expires</th></tr>\n");
+	for (i = 0; i < poolcnt; i++) {
+		fprintf(buffer, "<tr><td><a href='%s'>%s</a></td><td>%s</td><td>%s</td></tr>\n",
+			anchortab[pooltab[i].id].href,
+			pooltab[i].print_name, pooltab[i].last_modified,
+			pooltab[i].expires);
+	}
+	fprintf(buffer, "</table>\n");
+	fclose(buffer);
+	page(stdout, "Pools", NULL, content);
+	free(content);
+}
+
+
+void show_pool_schedule(int poolid)
+{
+	int i;
+	int swimcnt = sizeof(swimtab) / sizeof(swimtab[0]);
+	FILE *buffer;
+	char *content;
+	size_t contentlen;
+
+	printf("Content-type: text/html\n\n");
+	buffer = open_memstream(&content, &contentlen);
+	fputs("<table class='table table-bordered table-striped'>", buffer);
+	for (i = 0; i < swimcnt; i++) {
+		if (swimtab[i].pool == poolid) {
+			int s = swimtab[i].start;
+			int e = swimtab[i].end;
+			int h = s / 100;
+			int m = s % 100;
+			int d = ((e/100-h) * 60) + (e%100-m);
+			fprintf(buffer,
+			       "<tr><th class='text-right'>%d:%02d %cm</th><td>"
+			       "<div class='text-success'>%s</div>"
+			       "<div class='text-muted'>%d min "
+			       "(<a href='%s'>%s</a>)</div></td></tr>\n",
+				h>12?h%12:h, m, h>=12?'p':'a',
+				typetab[swimtab[i].type].print_name, d,
+				anchortab[poolid].href,
+				pooltab[swimtab[i].pool].print_name);
+		}
+	}
+	fputs("</table>", buffer);
+	fclose(buffer);
+	page(stdout, pooltab[poolid].print_name, "Schedule", content);
+	free(content);
+}
+
+
+void pool_schedule_action()
+{
+        int poolid;
+        int poolcnt = sizeof(pooltab) / sizeof(pooltab[0]);
+        char *query;
+
+        query = getenv("QUERY_STRING");
+        if (query && sscanf(query, "q=%d", &poolid) == 1
+                && poolid >= 0 && poolid < poolcnt)
+                show_pool_schedule(poolid);
+        else
+                printf("Status: 404 Not found\n\n");
+}
+
+
 struct menuitem {
 	int id;
 	char *path;
 	void (*action)(void);
 } menutab[] = {
-	MENUITEM_SCHEDULE, "schedule", schedule,
-	MENUITEM_HOME,     "",         list_places,
+	MENUITEM_POOL_SCHEDULE, "pool/schedule", pool_schedule_action,
+	MENUITEM_SCHEDULE,      "schedule",      schedule_action,
+	MENUITEM_POOLS,         "pools",         pools_action,
+	MENUITEM_HOME,          "",              list_places,
 };
 
 

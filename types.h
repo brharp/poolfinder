@@ -10,6 +10,7 @@ enum types {
 	A11Y_SWIM,
 	PRESCHOOL_SWIM,
 	FUN_SWIM,
+	COMBO_SWIM,
 };
 
 struct type {
@@ -25,5 +26,6 @@ struct type {
 	A11Y_SWIM, "Special needs swim",
 	PRESCHOOL_SWIM, "Preshcool swim",
 	FUN_SWIM, "Fun swim",
+	COMBO_SWIM, "Combo swim",
 };
 
