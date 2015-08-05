@@ -172,22 +172,30 @@ void show_pool_schedule(int poolid)
 	printf("Content-type: text/html\n\n");
 	buffer = open_memstream(&content, &contentlen);
 	fputs("<table class='table table-bordered table-striped'>", buffer);
+	fputs("<tr><th>Type</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th>"
+		"<th>Sa</th><th>Su</th><th>Start</th><th>End</th></tr>\n", buffer);
 	for (i = 0; i < swimcnt; i++) {
 		if (swimtab[i].pool == poolid) {
-			int s = swimtab[i].start;
-			int e = swimtab[i].end;
-			int h = s / 100;
-			int m = s % 100;
-			int d = ((e/100-h) * 60) + (e%100-m);
 			fprintf(buffer,
-			       "<tr><th class='text-right'>%d:%02d %cm</th><td>"
-			       "<div class='text-success'>%s</div>"
-			       "<div class='text-muted'>%d min "
-			       "(<a href='%s'>%s</a>)</div></td></tr>\n",
-				h>12?h%12:h, m, h>=12?'p':'a',
-				typetab[swimtab[i].type].print_name, d,
-				anchortab[poolid].href,
-				pooltab[swimtab[i].pool].print_name);
+				"<tr><td>%s</td>"
+				"<td><input type='checkbox' %s></td>"
+				"<td><input type='checkbox' %s></td>"
+				"<td><input type='checkbox' %s></td>"
+				"<td><input type='checkbox' %s></td>"
+				"<td><input type='checkbox' %s></td>"
+				"<td><input type='checkbox' %s></td>"
+				"<td><input type='checkbox' %s></td>"
+				"<td>%d</td><td>%d</td></tr>\n",
+				typetab[swimtab[i].type].print_name,
+				swimtab[i].day_of_week & MO ? "checked" : "",
+				swimtab[i].day_of_week & TU ? "checked" : "",
+				swimtab[i].day_of_week & WE ? "checked" : "",
+				swimtab[i].day_of_week & TH ? "checked" : "",
+				swimtab[i].day_of_week & FR ? "checked" : "",
+				swimtab[i].day_of_week & SA ? "checked" : "",
+				swimtab[i].day_of_week & SU ? "checked" : "",
+				swimtab[i].start,
+				swimtab[i].end);
 		}
 	}
 	fputs("</table>", buffer);
