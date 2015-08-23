@@ -51,6 +51,8 @@ struct anchor {
 	WINSTON_CHURCHILL, "http://www.hamilton.ca/CultureandRecreation/Recreation/CentresPoolsArenas/SirWinstonChurchill/PublicSwim.htm",
 	STONEY_CREEK, "http://www.hamilton.ca/CultureandRecreation/Recreation/CentresPoolsArenas/StoneyCreekRecCentre/PublicSwim.htm",
 	VALLEY_PARK, "http://www.hamilton.ca/CultureandRecreation/Recreation/CentresPoolsArenas/ValleyPark/PublicSwim.htm",
+	COH_VICTORIA_PARK, "http://www.hamilton.ca/parks-recreation/drop-in-recreation-programs/victoria-park-outdoor-pool",
+	WALKER, "http://www.hamilton.ca/parks-recreation/drop-in-recreation-programs/walker-outdoor-pool",
 	WESTMOUNT, "http://www.hamilton.ca/CultureandRecreation/Recreation/CentresPoolsArenas/Westmount/publicSwim.htm",
 	MACQUARRIE, "",
 	BREWER, "",
