@@ -1,6 +1,13 @@
 %{
 int yylex (void);
 void yyerror (char const *);
+char *pool_name,
+     *start_date,
+     *end_date,
+     *swim_type,
+     *day_of_week,
+     *start_time,
+     *end_time;
 %}
 
 %token POOLNAME
@@ -11,36 +18,46 @@ void yyerror (char const *);
 
 %%
 
-schedules:
-	/* empty */
-|	schedule pool
+pools:
+	pool
+|	pools pool
 ;
 
 pool:
-	POOLNAME DATE DATE swimtimes { printf("pool: %s (%s to %s)\n", $1, $2, $3:
+	POOLNAME DATE DATE schedules {
+		pool_name  = strdup($1);
+		start_date = strdup($2);
+		end_date   = strdup($3);
+    }
 ;
 
-swimtimes:
-	swimtime
-|	swimtimes swimtime
+schedules:
+	schedule
+|	schedules schedule
 ;
 
-swimtime:
-	SWIMTYPE dayschedules
+schedule:
+	SWIMTYPE days { swim_type = strdup($1); }
 ;
 
-dayschedules:
-	dayschedule
-|	dayschedules dayschedule
+days:
+	day
+|	days day
 ;
 
-dayschedule:
-	DOW times
+day:
+	DOW times { day_of_week = strdup($1); }
 ;
 
 times:
-	TIME
-|	times TIME
+	time
+|	times time
 ;
 
+time:
+	TIME TIME {
+		printf("%s %s %s %s %s %s %s\n", pool_name, start_date, end_date,
+			swim_type, day_of_week, $1, $2);
+    }
+;
 

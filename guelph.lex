@@ -1,3 +1,6 @@
+%{
+#include "y.tab.h"
+%}
 
 DIGIT	[0-9]
 
