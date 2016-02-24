@@ -14,3 +14,7 @@ install: search.cgi
 clean:
 	rm *.cgi
 
+gparse: guelph.lex
+	flex guelph.lex
+	cc -o gparse lex.yy.c  /usr/lib/libfl.a
+
