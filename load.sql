@@ -4,14 +4,26 @@ create procedure schedule(c text, ds date, de date, p text, t text, s time, e ti
 begin
   set @d = ds;
   while @d < de do
-    insert into schedule values (c, t, p, @d, s, e);
+    if weekday(@d) == @wkday then
+      insert into schedule values (c, t, p, @d, s, e);
+    end if
     set @d = date_add(@d, interval 1 day);
   end while;
-end//
+end
+create procedure ins(s time, e time)
+begin
+  call schedule(@city, @date1, @date2, @pool, @swimtype, s, e);
+end
+//
 delimiter ;
 set @city = 'Guelph';
-set @swimtype = 'Public swim';
-set @pool = 'West End Community Centre';
 set @date1 = date('2016/9/6');
 set @date2 = date('2017/4/2');
-call schedule(@city, @date1, @date2, @swimtype, @pool, 'Public swim', '06:00', '08:00');
+set @pool = 'West End Community Centre';
+set @swimtype = 'Public swim';
+set @wkday = MON;
+call ins('14:00', '15:00');
+set @wkday = FRI;
+call ins('19:30', '21:00');
+set @wkday = SAT;
+call ins('14:00', '15:00');
