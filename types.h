@@ -29,3 +29,10 @@ struct type {
 	COMBO_SWIM, "Combo swim",
 };
 
+struct form {
+	char *id;
+	char *type;
+	char *value;
+	char *label;
+};
+

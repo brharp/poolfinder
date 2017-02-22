@@ -1,6 +1,6 @@
 
-htdocs=/var/www
-cgi-bin=/usr/lib/cgi-bin
+htdocs=/var/www/htdocs
+cgi-bin=/var/www/cgi-bin
 
 all: search.cgi
 

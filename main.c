@@ -149,10 +149,14 @@ void pools_action()
 	fprintf(buffer, "<table class='table table-striped table-bordered'>\n");
 	fprintf(buffer, "<tr><th>Pool</th><th>Last modified</th><th>Expires</th></tr>\n");
 	for (i = 0; i < poolcnt; i++) {
-		fprintf(buffer, "<tr><td><a href='%s'>%s</a></td><td>%s</td><td>%s</td></tr>\n",
+		fprintf(buffer, "<tr><td><a href='%s'>%s</a></td><td>%s</td>"
+				"<td>%s</td><td><a href='%s/%s?q=%d'>Edit</a></tr>\n",
 			anchortab[pooltab[i].id].href,
 			pooltab[i].print_name, pooltab[i].last_modified,
-			pooltab[i].expires);
+			pooltab[i].expires,
+			getenv("SCRIPT_NAME"),
+			menu_get_path(MENUITEM_POOL_EDIT),
+			pooltab[i].id);
 	}
 	fprintf(buffer, "</table>\n");
 	fclose(buffer);
@@ -205,6 +209,77 @@ void show_pool_schedule(int poolid)
 }
 
 
+void pool_edit_form(int poolid)
+{
+	int i;
+	int swimcnt = sizeof(swimtab) / sizeof(swimtab[0]);
+	FILE *buffer;
+	char *content;
+	size_t contentlen;
+	struct form edit[] = {
+		{ "poolId", "hidden", NULL, NULL },
+		{ "printName", "text", "", "Print name" },
+		{ "lat", "text", "", "Latitude" },
+		{ "lng", "text", "", "Longitude" },
+	};
+	int editcnt = sizeof(edit) / sizeof(edit[0]);
+
+	if (method = getenv("REQUEST_METHOD") && strcasecmp(method, "POST") == 0) {
+		form_post(edit, editcnt);
+		if (form_is_valid(edit, editcnt)) {
+			pool_save();
+		}
+	}
+
+	edit[0].value = pooltab[poolid].print_name;
+	edit[1].value = malloc(30);
+	sprintf(edit[1].value, "%f", pooltab[poolid].lat);
+	edit[2].value = malloc(30);
+	sprintf(edit[2].value, "%f", pooltab[poolid].lng);
+
+	printf("Content-type: text/html\n\n");
+	buffer = open_memstream(&content, &contentlen);
+	fputs("<form>", buffer);
+	for (i = 0; i < formcnt; i++) {
+		fputs("<div class=form-group>", buffer);
+		fprintf(buffer, "<label for='%s'>%s</label>",
+			edit[i].id, edit[i].label);
+		fprintf(buffer, "<input type='%s' class='form-control' id='%s' value='%s'>",
+			edit[i].type, edit[i].id, edit[i].value);
+		fputs("</div>", buffer);
+	}
+	fputs("<button type='submit' class='btn btn-default'>Submit</button>",
+		buffer);
+	fputs("</form>", buffer);
+	fclose(buffer);
+	page(stdout, pooltab[poolid].print_name, "Edit", content);
+	free(content);
+}
+
+
+void pool_save()
+{
+}
+
+
+void pool_edit_action()
+{
+        int poolid;
+        int poolcnt = sizeof(pooltab) / sizeof(pooltab[0]);
+        char *query;
+
+	if (method = getenv("REQUEST_METHOD")
+		&& strcmp(method, "POST") == 0)
+		pool_save();
+	else if (query = getenv("QUERY_STRING"
+		&& sscanf(query, "q=%d", &poolid) == 1
+                && poolid >= 0 && poolid < poolcnt)
+                pool_edit_form(poolid);
+        else
+                printf("Status: 404 Not found\n\n");
+}
+
+
 void pool_schedule_action()
 {
         int poolid;
@@ -226,6 +301,7 @@ struct menuitem {
 	void (*action)(void);
 } menutab[] = {
 	MENUITEM_POOL_SCHEDULE, "pool/schedule", pool_schedule_action,
+	MENUITEM_POOL_EDIT,     "pool/edit",     pool_edit_action,
 	MENUITEM_SCHEDULE,      "schedule",      schedule_action,
 	MENUITEM_POOLS,         "pools",         pools_action,
 	MENUITEM_HOME,          "",              list_places,
