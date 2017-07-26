@@ -1,19 +1,20 @@
 
-htdocs=/var/www/htdocs
-cgi-bin=/var/www/cgi-bin
+htdocs=$(prefix)/htdocs
+cgibindir=$(prefix)/cgi-bin
+CFLAGS=-luuid
 
-all: search.cgi cal
+all: search.cgi events
 
-cal: cal.c
-	cc -g -o $@ $^
+events: events.c
+	$(CC) $(CFLAGS) -g -o $@ $^
 
 search.cgi: main.c template.c swimtab.h
 	cc -g -o $@ $^
 
-install: search.cgi cal
-	cp *.html $(htdocs)
-	cp search.cgi $(cgi-bin)/search
-	cp cal $(cgi-bin)/cal
+install: search.cgi events
+	#cp *.html $(DESTDIR)$(htdocs)
+	cp search.cgi $(DESTDIR)$(cgibindir)/search
+	install events $(DESTDIR)$(cgibindir)/events
 
 clean:
 	rm *.cgi
