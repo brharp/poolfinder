@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <string.h>
 #include "data.h"
 #include "template.h"
 #include "menu.h"
@@ -249,12 +250,26 @@ char *menu_get_path(int id)
 
 int main (int argc, char *argv[])
 {
-	char *query, *pathinfo;
+	char *query, *pathinfo, *querystring;
 	int menucnt = sizeof(menutab) / sizeof(menutab[0]);
 	int menuid;
 
 	setenv("TZ", "EST", 1);
 	pathinfo = getenv("PATH_INFO");
+	querystring = getenv("QUERY_STRING");
+
+	for (char *str = strdup(querystring); ; str = NULL) {
+		char *name = strtok(str, "=");
+		if (name == NULL)
+			break;
+		char *value = strtok(NULL, "&");
+		if (value == NULL)
+			break;
+		if (strcmp(name, "id") == 0) {
+			int id = atol(value);
+			printf("---> id = %d\n", id);
+		}
+	}
 
 	for (menuid = 0; menuid < menucnt; menuid++) {
 		if (strcmp(menutab[menuid].path, pathinfo+1) == 0) {

@@ -68,6 +68,7 @@ int main(int argc, char *argv)
       printf("<div>Event created.</div>");
     }
     printf("<form method='post'>");
+    //edit_event_form(&x);
     printf("<div>");
     printf("<label>Summary</label>");
     printf("<input type='text' name='summary' value='%s'>", x.summary);
