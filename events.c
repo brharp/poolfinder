@@ -32,38 +32,29 @@ char *formurldecode(char *dest, const char *src, size_t n);
 
 void bind_request_params(struct event *x)
 {
-    bind_query_params(x);
-    bind_request_body(x);
+    //bind_query_params(x);
+    //bind_request_body(x);
 }
 
-void render_form_input(struct form *f)
+void form_input(FILE *stream, const char *id, const char *label,
+    const char *type, const char *name, const char *value)
 {
-    printf("<div><label for='%s'>%s</label></div>\n", f->id, f->label);
-    printf("<div><input type='%s' name='%s' value='%s'></div>",
-             f->type, f->name, f->value);
+    fprintf(stream, "<div><label for='%s'>%s</label></div>\n", id, label);
+    fprintf(stream, "<div><input id='%s' type='%s' name='%s' value='%s'></div>\n", id, type, name, value);
 }
 
 void create_event_form(struct event *x)
 {
     printf("<form method='post' action='?action=create'>");
-    printf("<div><label>Summary</label></div>");
-    printf("<div><input type='text' name='summary' value='%s'></div>", x->summary);
-    printf("<div><label>Location</label></div>");
-    printf("<div><input type='text' name='location' value='%s'></div>", x->location);
-    printf("<div><label>Geo</label></div>");
-    printf("<div><input type='text' name='geo' value='%s'></div>", x->geo);
-    printf("<div><label>From</label></div>");
-    printf("<div><input type='date' name='from' value='%s'></div>", x->from);
-    printf("<div><label>To</label></div>");
-    printf("<div><input type='date' name='to' value='%s'></div>", x->to);
-    printf("<div><label>Start</label></div>");
-    printf("<div><input type='time' name='start' value='%s'></div>", x->start);
-    printf("<div><label>End</label></div>");
-    printf("<div><input type='time' name='end' value='%s'></div>", x->end);
-    printf("<div><label>Days</label></div>");
-    printf("<div><input type='text' name='byday' value='%s'></div>", x->byday);
-    printf("<div><label>Exdate</label></div>");
-    printf("<div><input type='text' name='exdate' value='%s'></div>", x->exdate);
+    form_input(stdout, "summary", "Summary", "text", "summary", x->summary);
+    form_input(stdout, "location", "Location", "text", "location", x->location);
+    form_input(stdout, "geo", "Geo", "text", "geo", x->geo);
+    form_input(stdout, "from", "From", "date", "from", x->from);
+    form_input(stdout, "to", "To", "date", "to", x->to);
+    form_input(stdout, "start", "Start", "time", "start", x->start);
+    form_input(stdout, "end", "End", "time", "end", x->end);
+    form_input(stdout, "byday", "Days", "text", "byday", x->byday);
+    form_input(stdout, "exdate", "Exdate", "text", "exdate", x->exdate);
     printf("<div><input type='submit'></div>");
     printf("</form>");
 }
