@@ -30,6 +30,19 @@ int putical(FILE *, struct event *);
 int getical(FILE *, struct event *);
 char *formurldecode(char *dest, const char *src, size_t n);
 
+void bind_request_params(struct event *x)
+{
+    bind_query_params(x);
+    bind_request_body(x);
+}
+
+void render_form_input(struct form *f)
+{
+    printf("<div><label for='%s'>%s</label></div>\n", f->id, f->label);
+    printf("<div><input type='%s' name='%s' value='%s'></div>",
+             f->type, f->name, f->value);
+}
+
 void create_event_form(struct event *x)
 {
     printf("<form method='post' action='?action=create'>");
