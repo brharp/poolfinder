@@ -1,7 +1,7 @@
 
 htdocs=$(prefix)/htdocs
 cgibindir=$(prefix)/cgi-bin
-CFLAGS=-luuid
+CFLAGS=-luuid -std=c99
 
 all: search.cgi events
 

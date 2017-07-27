@@ -1,17 +1,16 @@
-
+#define _POSIX_SOURCE
+#define _BSD_SOURCE
 #include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
 #include <strings.h>
 #include <uuid/uuid.h>
+#include <unistd.h>
+#include <linux/limits.h>
+#include <string.h>
 
 #define BODY   "body"
 #define TITLE  "title"
 #define H1     "h1"
-
-void on(const char *tag) { printf("<%s\n>", tag); }
-void no(const char *tag) { printf("</%s>\n", tag); }
-void in(const char *tag, const char *text) { on(tag); printf(text); no(tag); }
 
 struct event
 {
@@ -85,7 +84,7 @@ void edit_event_form(struct event *x)
 int main(int argc, char *argv)
 {
   char *s, *p, *action = "", *uid;
-  struct event x;
+  struct event x, y;
   FILE *events;
   uuid_t u;
 
@@ -160,15 +159,38 @@ int main(int argc, char *argv)
   }
   else if (strcmp(action, "edit") == 0)
   {
-    events = fopen("events.ical", "r");
-    while (getical(events, &x))
+    if (strcasecmp(getenv("REQUEST_METHOD"), "POST") == 0)
     {
-      if (strcmp(x.uid, uid) == 0)
+      char tmpnam[PATH_MAX];
+      strcpy(tmpnam, "events.XXXXXX");
+      FILE *tmp = fdopen(mkstemp(tmpnam), "a");
+      events = fopen("events.ical", "r");
+      while (getical(events, &x))
       {
-        edit_event_form(&x);
+        if (strcmp(x.uid, uid) == 0)
+          putical(tmp, &y);
+        else
+          putical(tmp, &x);
       }
+      fclose(events);
+      unlink("events.bak");
+      rename("events.ical", "events.bak");
+      rename(tmpnam, "events.ical");
     }
-    fclose(events);
+    else
+    {
+      events = fopen("events.ical", "r");
+      while (getical(events, &x))
+      {
+        if (strcmp(x.uid, uid) == 0)
+        {
+          edit_event_form(&x);
+        }
+      }
+      fclose(events);
+      printf("Status: 301\n");
+      printf("Location: .\n");
+    }
   }
   else
   {
