@@ -255,6 +255,8 @@ int main(int argc, char *argv)
       printf("</tr>");
     }
     fclose(events);
+    printf("</table>");
+    printf("<div><a href='?action=create'>Create</a></div>");
   }
 
   exit(EXIT_SUCCESS);
