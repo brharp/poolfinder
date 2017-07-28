@@ -12,6 +12,9 @@
 #define TITLE  "title"
 #define H1     "h1"
 
+#define DATA_FILE "/pf/events.ical"
+#define BACKUP_FILE "/pf/events.bak"
+
 struct event
 {
   char uid[40];
@@ -32,57 +35,81 @@ char *formurldecode(char *dest, const char *src, size_t n);
 
 void bind_request_params(struct event *x)
 {
-    //bind_query_params(x);
-    //bind_request_body(x);
+  char *s, *p;
+  /* read post body */;
+  scanf("%ms", &s);
+  /* bind parameters */
+  for (; p = strtok(s, "&"); s = 0)
+  {
+    if (strncmp(p, "uid=", 4) == 0)
+      formurldecode(x->uid, p + 4, sizeof(x->uid));
+    else if (strncmp(p, "summary=", 8) == 0)
+      formurldecode(x->summary, p + 8, sizeof(x->summary));
+    else if (strncmp(p, "location=", 9) == 0)
+      formurldecode(x->location, p + 9, sizeof(x->location));
+    else if (strncmp(p, "geo=", 4) == 0)
+      formurldecode(x->geo, p + 4, sizeof(x->geo));
+    else if (strncmp(p, "from=", 5) == 0)
+      formurldecode(x->from, p + 5, sizeof(x->from));
+    else if (strncmp(p, "to=", 3) == 0)
+      formurldecode(x->to, p + 3, sizeof(x->to));
+    else if (strncmp(p, "start=", 6) == 0)
+      formurldecode(x->start, p + 6, sizeof(x->start));
+    else if (strncmp(p, "end=", 4) == 0)
+      formurldecode(x->end, p + 4, sizeof(x->end));
+    else if (strncmp(p, "byday=", 6) == 0)
+      formurldecode(x->byday, p + 6, sizeof(x->byday));
+    else if (strncmp(p, "exdate=", 7) == 0)
+      formurldecode(x->exdate, p + 7, sizeof(x->exdate));
+  }
+  free(s);
 }
 
 void form_input(FILE *stream, const char *id, const char *label,
     const char *type, const char *name, const char *value)
 {
+  if (strcmp(type, "hidden") == 0)
+  {
+    fprintf(stream, "<input id='%s' type='%s' name='%s' value='%s'>\n", id, type, name, value);
+  }
+  else
+  {
     fprintf(stream, "<div><label for='%s'>%s</label></div>\n", id, label);
     fprintf(stream, "<div><input id='%s' type='%s' name='%s' value='%s'></div>\n", id, type, name, value);
-}
-
-void create_event_form(struct event *x)
-{
-    printf("<form method='post' action='?action=create'>");
-    form_input(stdout, "summary", "Summary", "text", "summary", x->summary);
-    form_input(stdout, "location", "Location", "text", "location", x->location);
-    form_input(stdout, "geo", "Geo", "text", "geo", x->geo);
-    form_input(stdout, "from", "From", "date", "from", x->from);
-    form_input(stdout, "to", "To", "date", "to", x->to);
-    form_input(stdout, "start", "Start", "time", "start", x->start);
-    form_input(stdout, "end", "End", "time", "end", x->end);
-    form_input(stdout, "byday", "Days", "text", "byday", x->byday);
-    form_input(stdout, "exdate", "Exdate", "text", "exdate", x->exdate);
-    printf("<div><input type='submit'></div>");
-    printf("</form>");
+  }
 }
 
 void edit_event_form(struct event *x)
 {
-    printf("<form method='post' action='?action=edit'>");
-    printf("<input type='hidden' name='uid' value='%s'>", x->uid);
-    printf("<div><label>Summary</label></div>");
-    printf("<div><input type='text' name='summary' value='%s'></div>", x->summary);
-    printf("<div><label>Location</label></div>");
-    printf("<div><input type='text' name='location' value='%s'></div>", x->location);
-    printf("<div><label>Geo</label></div>");
-    printf("<div><input type='text' name='geo' value='%s'></div>", x->geo);
-    printf("<div><label>From</label></div>");
-    printf("<div><input type='date' name='from' value='%s'></div>", x->from);
-    printf("<div><label>To</label></div>");
-    printf("<div><input type='date' name='to' value='%s'></div>", x->to);
-    printf("<div><label>Start</label></div>");
-    printf("<div><input type='time' name='start' value='%s'></div>", x->start);
-    printf("<div><label>End</label></div>");
-    printf("<div><input type='time' name='end' value='%s'></div>", x->end);
-    printf("<div><label>Days</label></div>");
-    printf("<div><input type='text' name='byday' value='%s'></div>", x->byday);
-    printf("<div><label>Exdate</label></div>");
-    printf("<div><input type='text' name='exdate' value='%s'></div>", x->exdate);
-    printf("<div><input type='submit'></div>");
-    printf("</form>");
+  printf("<form method='post'>");
+  form_input(stdout, "uid", NULL, "hidden", "uid", x->uid);
+  form_input(stdout, "summary", "Summary", "text", "summary", x->summary);
+  form_input(stdout, "location", "Location", "text", "location", x->location);
+  form_input(stdout, "geo", "Geo", "text", "geo", x->geo);
+  form_input(stdout, "from", "From", "date", "from", x->from);
+  form_input(stdout, "to", "To", "date", "to", x->to);
+  form_input(stdout, "start", "Start", "time", "start", x->start);
+  form_input(stdout, "end", "End", "time", "end", x->end);
+  form_input(stdout, "byday", "Days", "text", "byday", x->byday);
+  form_input(stdout, "exdate", "Exdate", "text", "exdate", x->exdate);
+  printf("<div><input type='submit'></div>");
+  printf("</form>");
+}
+
+void create_event(struct event *x)
+{
+  uuid_t u;
+  uuid_generate(u);
+  uuid_unparse(u, x->uid);
+  FILE *events = fopen(DATA_FILE, "a");
+  putical(events, x);
+  fclose(events);
+}
+
+void send_redirect(const char *url)
+{
+  printf("Status: 301\n");
+  printf("Location: %s\n\n", url);
 }
 
 int main(int argc, char *argv)
@@ -90,12 +117,9 @@ int main(int argc, char *argv)
   char *s, *p, *action = "", *uid;
   struct event x, y;
   FILE *events;
-  uuid_t u;
 
   memset(&x, 0, sizeof(x));
-
-  printf("Content-type: text/html\n\n");
-  printf("<html>");
+  memset(&y, 0, sizeof(y));
 
   s = getenv("QUERY_STRING");
   for (; p = strtok(s, "&"); s = 0)
@@ -108,67 +132,56 @@ int main(int argc, char *argv)
 
   if (strcmp(action, "create") == 0)
   {
+    printf("Content-type: text/html\n\n");
+    printf("<html>");
     printf("<title>Create Event</title>");
     printf("<body>");
     printf("<h1>Create Event</h1>");
     if (strcasecmp(getenv("REQUEST_METHOD"), "POST") == 0)
     {
-      /* read post body */;
-      scanf("%ms", &s);
-      /* bind parameters */
-      for (; p = strtok(s, "&"); s = 0)
-      {
-        if (strncmp(p, "summary=", 8) == 0)
-          formurldecode(x.summary, p + 8, sizeof(x.summary));
-        else if (strncmp(p, "location=", 9) == 0)
-          formurldecode(x.location, p + 9, sizeof(x.location));
-        else if (strncmp(p, "geo=", 4) == 0)
-          formurldecode(x.geo, p + 4, sizeof(x.geo));
-        else if (strncmp(p, "from=", 5) == 0)
-          formurldecode(x.from, p + 5, sizeof(x.from));
-        else if (strncmp(p, "to=", 3) == 0)
-          formurldecode(x.to, p + 3, sizeof(x.to));
-        else if (strncmp(p, "start=", 6) == 0)
-          formurldecode(x.start, p + 6, sizeof(x.start));
-        else if (strncmp(p, "end=", 4) == 0)
-          formurldecode(x.end, p + 4, sizeof(x.end));
-        else if (strncmp(p, "byday=", 6) == 0)
-          formurldecode(x.byday, p + 6, sizeof(x.byday));
-        else if (strncmp(p, "exdate=", 7) == 0)
-          formurldecode(x.exdate, p + 7, sizeof(x.exdate));
-      }
-      uuid_generate(u);
-      uuid_unparse(u, x.uid);
-      events = fopen("events.ical", "a");
-      putical(events, &x);
-      fclose(events);
+      bind_request_params(&x);
+      create_event(&x);
       printf("<div>Event created.</div>");
     }
-    create_event_form(&x);
+    edit_event_form(&x);
+    printf("</html>");
   }
   else if (strcmp(action, "copy") == 0)
   {
-    const char *title = "Copy Event";
-    printf("<title>%s</title>", title);
-    printf("<h1>%s</h1>", title);
-    events = fopen("events.ical", "r");
-    while (getical(events, &x))
+    if (strcasecmp(getenv("REQUEST_METHOD"), "POST") == 0)
     {
-      if (strcmp(x.uid, uid) == 0)
-      {
-        create_event_form(&x);
-      }
+      bind_request_params(&x);
+      create_event(&x);
+      send_redirect(getenv("SCRIPT_NAME"));
     }
-    fclose(events);
+    else /* REQUEST_METHOD == "GET" */
+    {
+      const char *title = "Copy Event";
+      printf("Content-type: text/html\n\n");
+      printf("<html>");
+      printf("<title>%s</title>", title);
+      printf("<h1>%s</h1>", title);
+      events = fopen(DATA_FILE, "r");
+      while (getical(events, &x))
+      {
+        if (strcmp(x.uid, uid) == 0)
+        {
+          x.uid[0] = 0;
+          edit_event_form(&x);
+        }
+      }
+      fclose(events);
+    }
   }
   else if (strcmp(action, "edit") == 0)
   {
     if (strcasecmp(getenv("REQUEST_METHOD"), "POST") == 0)
     {
+      bind_request_params(&y);
       char tmpnam[PATH_MAX];
-      strcpy(tmpnam, "events.XXXXXX");
+      strcpy(tmpnam, "/tmp/events.XXXXXX");
       FILE *tmp = fdopen(mkstemp(tmpnam), "a");
-      events = fopen("events.ical", "r");
+      events = fopen(DATA_FILE, "r");
       while (getical(events, &x))
       {
         if (strcmp(x.uid, uid) == 0)
@@ -177,13 +190,20 @@ int main(int argc, char *argv)
           putical(tmp, &x);
       }
       fclose(events);
-      unlink("events.bak");
-      rename("events.ical", "events.bak");
-      rename(tmpnam, "events.ical");
+      unlink(BACKUP_FILE);
+      rename(DATA_FILE, BACKUP_FILE);
+      rename(tmpnam, DATA_FILE);
+      printf("Status: 301\n");
+      printf("Location: %s\n\n", getenv("SCRIPT_NAME"));
     }
     else
     {
-      events = fopen("events.ical", "r");
+      const char *title = "Edit Event";
+      printf("Content-type: text/html\n\n");
+      printf("<html>");
+      printf("<title>%s</title>", title);
+      printf("<h1>%s</h1>", title);
+      events = fopen(DATA_FILE, "r");
       while (getical(events, &x))
       {
         if (strcmp(x.uid, uid) == 0)
@@ -192,12 +212,13 @@ int main(int argc, char *argv)
         }
       }
       fclose(events);
-      printf("Status: 301\n");
-      printf("Location: .\n");
+      printf("</html>");
     }
   }
   else
   {
+    printf("Content-type: text/html\n\n");
+    printf("<style>table,th,td { border: thin solid gray }</style>");
     printf("<title>Index</title>");
     printf("<table>");
     printf("<tr>");
@@ -212,7 +233,8 @@ int main(int argc, char *argv)
     printf("<th>Exdate</th>");
     printf("<th>Actions</th>");
     printf("</tr>");
-    events = fopen("events.ical", "r");
+    events = fopen(DATA_FILE, "r");
+    if (events != NULL)
     while (getical(events, &x))
     {
       printf("<tr>");
