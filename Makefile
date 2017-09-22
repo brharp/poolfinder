@@ -1,4 +1,4 @@
-
+prefix=/var/www
 htdocs=$(prefix)/htdocs
 cgibindir=$(prefix)/cgi-bin
 CFLAGS=-luuid -std=c99
