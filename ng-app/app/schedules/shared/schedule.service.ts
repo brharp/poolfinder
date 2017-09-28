@@ -31,8 +31,6 @@ const SCHEDULES = [{
     ]
 }]
 
-<<<<<<< HEAD
-=======
 const SCHEDULE = [
 { 'city': 'Guelph', 'from': new Date('9/5/2017'), 'to': new Date('3/31/2018'), 'pool': 'Centennial Pool', 'lat': 43.522536, 'lon': -80.247808, 'href': 'http://guelph.ca/living/recreation/rec-facilities/centennial-pool/', 'program': 'Single lane swim', 'dayofweek': 'Monday', 'start': '9:00:00 AM', 'end': '10:00:00 AM' },
 { 'city': 'Guelph', 'from': new Date('9/5/2017'), 'to': new Date('3/31/2018'), 'pool': 'Centennial Pool', 'lat': 43.522536, 'lon': -80.247808, 'href': 'http://guelph.ca/living/recreation/rec-facilities/centennial-pool/', 'program': 'Single lane swim', 'dayofweek': 'Tuesday', 'start': '10:30:00 AM', 'end': '11:30:00 AM' },
@@ -135,4 +133,3 @@ const SCHEDULE = [
 { 'city': 'Guelph', 'from': new Date('9/5/2017'), 'to': new Date('3/31/2018'), 'pool': 'West End Community Centre', 'lat': 43.524788, 'lon': -80.291882, 'href': 'http://guelph.ca/living/recreation/rec-facilities/west-end-community-centre/', 'program': 'Soothing waters swim', 'dayofweek': 'Wednesday', 'start': '8:00:00 PM', 'end': '10:00:00 PM' },
 { 'city': 'Guelph', 'from': new Date('9/5/2017'), 'to': new Date('3/31/2018'), 'pool': 'West End Community Centre', 'lat': 43.524788, 'lon': -80.291882, 'href': 'http://guelph.ca/living/recreation/rec-facilities/west-end-community-centre/', 'program': 'Soothing waters swim', 'dayofweek': 'Thursday', 'start': '8:00:00 PM', 'end': '10:00:00 PM' },
 ];
->>>>>>> 2499270617ca83370d684ecfad5c40b3a635f2e4
