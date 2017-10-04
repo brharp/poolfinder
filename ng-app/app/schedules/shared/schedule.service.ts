@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core"
 @Injectable()
 export class ScheduleService {
     getSchedules() {
-        return SCHEDULES
+        return SCHEDULE
     }
 }
 
@@ -49,7 +49,7 @@ const SCHEDULE = [
 { 'city': 'Guelph', 'from': new Date('9/5/2017'), 'to': new Date('3/31/2018'), 'pool': 'Centennial Pool', 'lat': 43.522536, 'lon': -80.247808, 'href': 'http://guelph.ca/living/recreation/rec-facilities/centennial-pool/', 'program': 'Fitness swim', 'dayofweek': 'Saturday', 'start': '7:00:00 AM', 'end': '9:00:00 AM' },
 { 'city': 'Guelph', 'from': new Date('9/5/2017'), 'to': new Date('3/31/2018'), 'pool': 'Centennial Pool', 'lat': 43.522536, 'lon': -80.247808, 'href': 'http://guelph.ca/living/recreation/rec-facilities/centennial-pool/', 'program': 'Fitness swim', 'dayofweek': 'Sunday', 'start': '9:00:00 AM', 'end': '10:00:00 AM' },
 { 'city': 'Guelph', 'from': new Date('9/5/2017'), 'to': new Date('3/31/2018'), 'pool': 'Centennial Pool', 'lat': 43.522536, 'lon': -80.247808, 'href': 'http://guelph.ca/living/recreation/rec-facilities/centennial-pool/', 'program': 'Public swim', 'dayofweek': 'Sunday', 'start': '6:30:00 PM', 'end': '8:00:00 PM' },
-{ 'city': 'Guelph', 'from': new Date('9/5/2017'), 'to': new Date('3/31/2018'), 'pool': 'Centennial Pool', 'lat': 43.522536, 'lon': -80.247808, 'href': 'http://guelph.ca/living/recreation/rec-facilities/centennial-pool/', 'program': 'Women's only swim', 'dayofweek': 'Sunday', 'start': '1:30:00 PM', 'end': '3:00:00 PM' },
+{ 'city': 'Guelph', 'from': new Date('9/5/2017'), 'to': new Date('3/31/2018'), 'pool': 'Centennial Pool', 'lat': 43.522536, 'lon': -80.247808, 'href': 'http://guelph.ca/living/recreation/rec-facilities/centennial-pool/', 'program': 'Women\'s only swim', 'dayofweek': 'Sunday', 'start': '1:30:00 PM', 'end': '3:00:00 PM' },
 { 'city': 'Guelph', 'from': new Date('9/5/2017'), 'to': new Date('3/31/2018'), 'pool': 'Victoria Road Recreation Centre', 'lat': 43.563825, 'lon': -80.238879, 'href': 'http://guelph.ca/living/recreation/rec-facilities/victoria-road-recreationcentre/', 'program': 'Lane swim', 'dayofweek': 'Monday', 'start': '9:30:00 AM', 'end': '11:30:00 AM' },
 { 'city': 'Guelph', 'from': new Date('9/5/2017'), 'to': new Date('3/31/2018'), 'pool': 'Victoria Road Recreation Centre', 'lat': 43.563825, 'lon': -80.238879, 'href': 'http://guelph.ca/living/recreation/rec-facilities/victoria-road-recreationcentre/', 'program': 'Lane swim', 'dayofweek': 'Wednesday', 'start': '9:30:00 AM', 'end': '11:30:00 AM' },
 { 'city': 'Guelph', 'from': new Date('9/5/2017'), 'to': new Date('3/31/2018'), 'pool': 'Victoria Road Recreation Centre', 'lat': 43.563825, 'lon': -80.238879, 'href': 'http://guelph.ca/living/recreation/rec-facilities/victoria-road-recreationcentre/', 'program': 'Fitness swim', 'dayofweek': 'Monday', 'start': '9:00:00 PM', 'end': '10:00:00 PM' },
