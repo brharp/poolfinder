@@ -1,0 +1,11 @@
+#!/bin/sh
+
+PATTERN=`cat $1`
+while read -r VALUES
+do
+	if [ -n "$VALUES" ]
+	then
+		printf "$PATTERN" $VALUES
+	fi
+done
+
